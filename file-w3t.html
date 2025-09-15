@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Word-Wall • Play & Chill</title>
+
+<!-- ===============  Aesthetic CSS  =============== -->
+<style>
+:root{
+  --brand:#8e7dff;
+  --bg:#f7f8fc;
+  --card:#ffffffcc;
+  --text:#222;
+  --muted:#666;
+  --blur:blur(14px);
+}
+[data-theme="dark"]{
+  --bg:#14151a;
+  --card:#24262ecc;
+  --text:#f1f1f1;
+  --muted:#aaa;
+  --blur:blur(8px);
+}
+*{box-sizing:border-box;margin:0;padding:0;font-family: "Poppins",sans-serif}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);overflow-x:hidden}
+
+section{padding:80px 6%}
+h1,h2{font-weight:700;letter-spacing:-.5px}
+h2{font-size:2rem;margin-bottom:40px;text-align:center}
+
+header{position:sticky;top:0;z-index:90;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:18px 6%;backdrop-filter:var(--blur);background:var(--card);border-bottom:1px solid #ffffff22}
+header h1{font-size:1.4rem}
+nav a{margin-left:26px;color:var(--text);text-decoration:none;font-weight:600;position:relative}
+nav a::after{content:'';position:absolute;left:0;bottom:-3px;width:0;height:2px;background:var(--brand);transition:.25s}
+nav a:hover::after{width:100%}
+#modeBtn{cursor:pointer;font-size:1.25rem;margin-left:26px}
+
+.hero{height:65vh;display:flex;flex-direction:column;justify-content:center;align-items:center;
+  background:url('https://images.unsplash.com/photo-1535905748047-14b47c59929e?auto=format&fit=crop&w=1300&q=80') center/cover fixed}
+.hero h1{font-size:3.2rem;color:#fff;text-shadow:0 4px 18px #0006}
+.hero p{margin-top:10px;font-size:1.1rem;color:#f3f3f3}
+
+.card{background:var(--card);border-radius:18px;padding:36px;box-shadow:0 8px 30px rgba(0,0,0,.08);
+  backdrop-filter:var(--blur);transform:translateY(40px);opacity:0;transition:.7s ease-out}
+.card.appear{transform:translateY(0);opacity:1}
+
+.wordwall{display:flex;flex-direction:column;align-items:center}
+#grid{display:grid;grid-template-columns:repeat(6,60px);gap:10px}
+.cell{width:60px;height:60px;display:flex;justify-content:center;align-items:center;
+  font-size:1.5rem;font-weight:600;color:var(--text);background:#ffffff33;border-radius:10px;
+  user-select:none;cursor:pointer;transition:.25s}
+.cell.active{background:var(--brand);color:#fff;transform:scale(1.1)}
+
+.controls{margin-top:20px;display:flex;gap:15px;align-items:center}
+button{padding:10px 18px;border:none;border-radius:8px;background:var(--brand);color:#fff;font-weight:600;cursor:pointer}
+#score,#timer{font-weight:700}
+
+footer{padding:40px 0;text-align:center;color:var(--muted);font-size:.9rem}
+</style>
+</head>
+
+<body>
+
+<!-- ===============  Header  =============== -->
+<header>
+  <h1>Word-Wall</h1>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#play">Play</a>
+    <a href="#contact">Contact</a>
+    <span id="modeBtn" title="
